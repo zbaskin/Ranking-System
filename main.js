@@ -1,3 +1,5 @@
+import inquirer from "inquirer";
+
 function createArray(length) {
     var arr = [];
     for (let i = 0; i < length; i++) {
@@ -34,15 +36,15 @@ const rankingSystem = function (items) {
         return ["Error"];
     }
     const score = createArray(items.length);
-    var ranking = true;
-    while (ranking) {
+    var isRanking = true;
+    while (isRanking) {
         var rands = getTwoRandInts(items.length);
 
         updateWinner(score, 2, 3);
         
         // INSERT COMPARISON LOGIC
         
-        ranking = false;
+        isRanking = false;
     }
     return score;
 }
@@ -50,3 +52,12 @@ const rankingSystem = function (items) {
 var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America: The First Avenger", "The Avengers"];
 var ranks = rankingSystem(films);
 console.log(ranks);
+
+inquirer.prompt([
+    {
+        name: "",
+        message: "Who are you?"
+    },
+]).then(answers => {
+    console.info("Name:", answers.test);
+});

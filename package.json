@@ -1,0 +1,23 @@
+{
+  "name": "rankingsystem",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zbaskin/Ranking-System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zbaskin/Ranking-System/issues"
+  },
+  "homepage": "https://github.com/zbaskin/Ranking-System#readme",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  }
+}
