@@ -7,6 +7,11 @@ function getTwoRandInts(max) {
     return [rand1, rand2];
 }
 
+function updateWinner(items, winner, loser) {
+    items[winner]++;
+    items[loser]--;
+}
+
 const rankingSystem = function (items) {
     if (items.length < 3) {
         return ["Error"];
@@ -16,6 +21,8 @@ const rankingSystem = function (items) {
     while (ranking) {
         var rands = getTwoRandInts(items.length);
 
+        updateWinner(score, 2, 3);
+        
         // INSERT COMPARISON LOGIC
         
         ranking = false;
