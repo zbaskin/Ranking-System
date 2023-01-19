@@ -31,7 +31,7 @@ function updateWinner(items, winner, loser) {
     */
 }
 
-const rankingSystem = function (items) {
+async function rankingSystem(items) {
     if (items.length < 3) {
         return ["Error"];
     }
@@ -40,24 +40,34 @@ const rankingSystem = function (items) {
     while (isRanking) {
         var rands = getTwoRandInts(items.length);
 
-        updateWinner(score, 2, 3);
-        
-        // INSERT COMPARISON LOGIC
-        
-        isRanking = false;
+        await inquirer.prompt([
+            {
+                name: "winner",
+                message: `Do you prefer ${items[rands[0]]} (1) or ${items[rands[1]]} (2)?`,
+                default: "1"
+            },
+            {
+                name: "isRanking",
+                message: "Continue",
+                default: "Yes"
+            },
+        ]).then(answers => {
+            if (answers.winner == "1") {
+                updateWinner(score, rands[0], rands[1]);
+            } else if (answers.winner == "2") {
+                updateWinner(score, rands[1], rands[0]);
+            }
+
+            if (answers.isRanking.toLowerCase() == "no") {
+                isRanking = false;
+            }
+            console.log(answers);
+        });
     }
+
     return score;
 }
 
 var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America: The First Avenger", "The Avengers"];
-var ranks = rankingSystem(films);
+var ranks = await rankingSystem(films);
 console.log(ranks);
-
-inquirer.prompt([
-    {
-        name: "",
-        message: "Who are you?"
-    },
-]).then(answers => {
-    console.info("Name:", answers.test);
-});
