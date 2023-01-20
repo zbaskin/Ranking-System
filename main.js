@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import films from "./films.js";
 
 function createArray(length) {
     var arr = [];
@@ -68,6 +69,5 @@ async function rankingSystem(items) {
     return score;
 }
 
-var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America: The First Avenger", "The Avengers"];
 var ranks = await rankingSystem(films);
 console.log(ranks);
