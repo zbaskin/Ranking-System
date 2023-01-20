@@ -32,6 +32,14 @@ function updateWinner(items, winner, loser) {
     */
 }
 
+function flatten(items) {
+    var flat = [];
+    for (let i = 0; i < items.length; i++) {
+        flat.push(items[i][0]);
+    }
+    return flat;
+}
+
 async function rankingSystem(items) {
     if (items.length < 3) {
         return ["Error"];
@@ -62,12 +70,37 @@ async function rankingSystem(items) {
             if (answers.isRanking.toLowerCase() == "no") {
                 isRanking = false;
             }
-            console.log(answers);
         });
     }
 
     return score;
 }
 
-var ranks = await rankingSystem(films);
-console.log(ranks);
+function bubbleSort(arr, pivot) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length-i-1; j++) {
+            if (arr[j + 1] < arr[j]) {
+                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
+                [pivot[j + 1], pivot[j]] = [pivot[j], pivot[j + 1]];
+            }
+        }
+    }
+}
+
+function displayRanks(rankings) {
+    console.log("\nItems Ranked from Best to Worst");
+    console.log("-------------------------------")
+    for (let i = 0; i < rankings.length; i++) {
+        console.log(`${i + 1}. ${rankings[i]}`);
+    }
+    console.log("\n");
+}
+
+async function main() {
+    var ranks = await rankingSystem(films);
+    var flatRanks = flatten(ranks);
+    bubbleSort(flatRanks, films);
+    displayRanks(films.reverse());
+}
+
+main();
