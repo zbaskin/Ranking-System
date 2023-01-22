@@ -17,11 +17,11 @@ class RankingSystem extends React.Component {
             rankings: createArray(films.length)
         }
     }
-
+    // const [rankings, setRankings] = useState(createArray[films.length]);
     render() {
         return (
             <div>
-                {this.state.rankings[0][0]}
+                {this.state.rankings}
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import './App.css';
-import RankingSystem from './RankingSystem.js';
+import React, { useState } from 'react';
+//import RankingSystem from './RankingSystem.js';
 
 var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America", "The Avengers"];
 
@@ -28,7 +29,15 @@ function createArray(length) {
   return arr;
 }
 
-function Buttons(props) {
+/*function Rankings(props) {
+  return (
+    <div>
+      <p>Hello</p>
+    </div>
+  );
+}*/
+
+function Buttons() {
   var ints = getTwoRandInts(films.length);
   return (
     <div className="button-container">
@@ -38,13 +47,20 @@ function Buttons(props) {
   );
 }
 
+function RankingSystem() {
+  const [rankings, setRankings] = useState(createArray(films.length));
+  return (
+    <div>
+      <Buttons />
+      {rankings}
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Buttons />
-        <RankingSystem />
-      </header>
+      <RankingSystem />
     </div>
   );
 }
