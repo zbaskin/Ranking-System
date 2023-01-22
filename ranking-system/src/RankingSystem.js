@@ -56,6 +56,17 @@ function bubbleSort(arr, pivot) {
     }
 }
 
+class Switch extends Component {
+    render() {
+        return (
+            <label className="switch">
+                <input type="checkbox" />
+                <span className="slider round"></span>
+            </label>
+        );
+    }
+}
+
 class Button extends Component {
     render() {
         return (
@@ -131,6 +142,7 @@ class RankingSystem extends Component {
     render() {
         return (
             <div>
+                <Switch />
                 <Buttons 
                     film1={films[this.state.ints[0]]}
                     film2={films[this.state.ints[1]]}
