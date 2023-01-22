@@ -25,3 +25,11 @@
 .App-link {
   color: #61dafb;
 }
+
+.ranking {
+  font-size:large;
+}
+
+.ranking-container {
+  background-color: #fab2b2;
+}

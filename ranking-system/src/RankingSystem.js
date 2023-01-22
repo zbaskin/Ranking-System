@@ -25,6 +25,37 @@ function mutateArray(arr, winner, loser) {
     arr[loser][0] -= (1 / arr[loser][1]);
 }
 
+function isolateData(arr, titles) {
+    var ranks = [];
+    var films = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i][1] !== 0) {
+            ranks.push(arr[i]);
+            films.push(titles[i]);
+        }
+    }
+    return {ranks, films};
+}
+
+function flatten(items) {
+    var flat = [];
+    for (let i = 0; i < items.length; i++) {
+        flat.push(items[i][0]);
+    }
+    return flat;
+}
+
+function bubbleSort(arr, pivot) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length-i-1; j++) {
+            if (arr[j + 1] < arr[j]) {
+                [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
+                [pivot[j + 1], pivot[j]] = [pivot[j], pivot[j + 1]];
+            }
+        }
+    }
+}
+
 class Button extends Component {
     render() {
         return (
@@ -45,6 +76,32 @@ class Buttons extends Component {
                     film={this.props.film2}
                     onClick={this.props.onClick}
                 />
+            </div>
+        );
+    }
+}
+
+class Rankings extends Component {
+    render() {
+        var films = this.props.films;
+        var rankings = this.props.rankings;
+
+        var pureData = isolateData(rankings, films);
+        var ranks = flatten(pureData.ranks);
+        bubbleSort(ranks, pureData.films);
+        
+        var trueRanks = ranks.reverse();
+        var trueFilms = pureData.films.reverse();
+
+        var rows = [];
+
+        for (let i = 0; i < trueRanks.length; i++) {
+            rows.push(<p className="ranking" key={i}>{i + 1}. {trueFilms[i]}</p>)
+        }
+
+        return (
+            <div className="ranking-container">
+                {rows}
             </div>
         );
     }
@@ -78,6 +135,10 @@ class RankingSystem extends Component {
                     film1={films[this.state.ints[0]]}
                     film2={films[this.state.ints[1]]}
                     onClick={this.updateWinner}
+                />
+                <Rankings
+                    films={films}
+                    rankings={this.state.rankings}
                 />
             </div>
         )
