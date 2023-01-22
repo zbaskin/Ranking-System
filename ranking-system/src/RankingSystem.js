@@ -18,6 +18,13 @@ function getTwoRandInts(max) {
     return [rand1, rand2];
 }
 
+function mutateArray(arr, winner, loser) {
+    arr[winner][1]++;
+    arr[loser][1]++;
+    arr[winner][0] += (1 / arr[winner][1]);
+    arr[loser][0] -= (1 / arr[loser][1]);
+}
+
 class Button extends Component {
     render() {
         return (
@@ -53,8 +60,14 @@ class RankingSystem extends Component {
     }
     ints = getTwoRandInts(films.length);
     updateWinner = (event) => {
-        console.log(event.target.outerText);
+        var winner = films.indexOf(event.target.outerText);
+        var loser = (winner !== this.state.ints[0]) ? this.state.ints[0] : this.state.ints[1];
+        var newRankings = this.state.rankings.slice();
+
+        mutateArray(newRankings, winner, loser);
+
         this.setState({
+            rankings: newRankings,
             ints: getTwoRandInts(films.length)
         });
     }
