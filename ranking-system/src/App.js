@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-//import RankingSystem from './RankingSystem.js';
+import RankingSystem from './RankingSystem.js';
 
 var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America", "The Avengers"];
 
@@ -33,21 +33,13 @@ function createArray(length) {
   return arr;
 }
 
-/*function Rankings(props) {
-  return (
-    <div>
-      <p>Hello</p>
-    </div>
-  );
-}*/
-
 function Button(props) {
   return (
     <button className="App-button" onClick={() => updateWinner(props)}>{props.film}</button>
   );
 }
 
-function RankingSystem() {
+function RankingSystems() {
   const [rankings, setRankings] = useState(createArray(films.length));
   var ints = getTwoRandInts(films.length);
   return (
