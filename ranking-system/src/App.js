@@ -4,12 +4,16 @@ import React, { useState } from 'react';
 
 var films = ["Iron Man", "The Incredible Hulk", "Iron Man 2", "Thor", "Captain America", "The Avengers"];
 
-function updateWinner(items, winner, loser) {
-  items[winner][1]++;
+function updateWinner(props) {
+  var winner = films.indexOf(props.film);
+  var loser = (winner !== props.ints[0]) ? props.ints[0] : props.ints[1];
+  console.log(winner);
+  console.log(loser);
+  /*items[winner][1]++;
   items[loser][1]++;
 
   items[winner][0] += (1 / items[winner][1]);
-  items[loser][0] -= (1 / items[loser][1]);
+  items[loser][0] -= (1 / items[loser][1]);*/
 }
 
 function getTwoRandInts(max) {
@@ -37,21 +41,27 @@ function createArray(length) {
   );
 }*/
 
-function Buttons() {
-  var ints = getTwoRandInts(films.length);
+function Button(props) {
   return (
-    <div className="button-container">
-      <button className="App-button" onClick={updateWinner}>{films[ints[0]]}</button>
-      <button className="App-button" onClick={updateWinner}>{films[ints[1]]}</button>
-    </div>
+    <button className="App-button" onClick={() => updateWinner(props)}>{props.film}</button>
   );
 }
 
 function RankingSystem() {
   const [rankings, setRankings] = useState(createArray(films.length));
+  var ints = getTwoRandInts(films.length);
   return (
     <div>
-      <Buttons />
+      <div className="button-container">
+        <Button 
+          film={films[ints[0]]} 
+          ints={ints}
+        />
+        <Button 
+          film={films[ints[1]]} 
+          ints={ints}
+        />
+      </div>
       {rankings}
     </div>
   );
