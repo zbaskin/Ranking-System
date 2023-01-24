@@ -53,10 +53,27 @@
   height: 50px;
   font-weight: bold;
   display: flex;
-  justify-content: center;
   align-items: center;
   border: 5px solid #1C2126;
   user-select: none;
+}
+
+.ranking:hover {
+  background-color: #dadada;
+}
+
+.ranking-number {
+  background-color: #bb2b2b;
+  position: relative;
+  left: 5px;
+  border: 3px solid #1C2126;
+  padding: 5px 7px;
+  color: white;
+}
+
+.ranking-text{
+  display: flex;
+  margin: auto;
 }
 
 .ranking-container {

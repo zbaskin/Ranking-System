@@ -107,7 +107,12 @@ class Rankings extends Component {
         var rows = [];
 
         for (let i = 0; i < trueRanks.length; i++) {
-            rows.push(<p className="ranking" key={i}>{i + 1}. {trueFilms[i]}</p>)
+            rows.push(
+                <p className="ranking" key={i}>
+                    <span className="ranking-number">{i + 1}</span>
+                    <span className="ranking-text">{trueFilms[i]}</span>
+                </p>
+            );
         }
 
         return (
