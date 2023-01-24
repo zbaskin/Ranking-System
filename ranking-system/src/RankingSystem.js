@@ -147,7 +147,7 @@ class RankingSystem extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="App-container">
                 <Switch
                     isChecked={this.state.isChecked}
                     onChange={this.updateChecked}

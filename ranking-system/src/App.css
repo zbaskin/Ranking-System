@@ -2,15 +2,25 @@
   text-align: center;
 }
 
-.button-container {
-  /*background-color: #282c34;*/
+.App-container {
   min-height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.button-container {
+  background-color: #282c34;
+  /*min-height: 100vh;
+  height: 500px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  /*color: white;*/
+  color: white;*/
 }
 
 .App-button {
@@ -22,12 +32,9 @@
   /*background-color: #fda0a0;*/
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .ranking {
   font-size:large;
+  background-color: #2196F3;
 }
 
 .ranking-container {
@@ -38,6 +45,7 @@
 .switch {
   position: relative;
   display: inline-block;
+  margin-bottom: 20px;
   width: 60px;
   height: 34px;
 }
