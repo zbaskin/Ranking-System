@@ -60,7 +60,7 @@ class Switch extends Component {
     render() {
         return (
             <label className="switch">
-                <input onClick={this.props.onClick} checked={this.props.isChecked} type="checkbox" />
+                <input onChange={this.props.onChange} checked={this.props.isChecked} type="checkbox" />
                 <span className="slider round"></span>
             </label>
         );
@@ -150,7 +150,7 @@ class RankingSystem extends Component {
             <div>
                 <Switch
                     isChecked={this.state.isChecked}
-                    onClick={this.updateChecked}
+                    onChange={this.updateChecked}
                 />
                 {
                     !this.state.isChecked ? 

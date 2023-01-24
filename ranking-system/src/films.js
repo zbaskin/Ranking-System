@@ -1,4 +1,4 @@
-export default [
+const films = [
     "Iron Man", 
     "The Incredible Hulk", 
     "Iron Man 2", 
@@ -30,3 +30,5 @@ export default [
     "Thor: Love and Thunder",
     "Black Panther: Wakanda Forever"
 ];
+
+export default films;
