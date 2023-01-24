@@ -60,7 +60,7 @@ class Switch extends Component {
     render() {
         return (
             <label className="switch">
-                <input type="checkbox" />
+                <input onClick={this.props.onClick} checked={this.props.isChecked} type="checkbox" />
                 <span className="slider round"></span>
             </label>
         );
@@ -123,7 +123,8 @@ class RankingSystem extends Component {
         super(props);
         this.state = {
             rankings: createArray(films.length),
-            ints: getTwoRandInts(films.length)
+            ints: getTwoRandInts(films.length),
+            isChecked: false
         }
     }
     ints = getTwoRandInts(films.length);
@@ -139,19 +140,30 @@ class RankingSystem extends Component {
             ints: getTwoRandInts(films.length)
         });
     }
+    updateChecked = () => {
+        this.setState({
+            isChecked: !this.state.isChecked
+        });
+    }
     render() {
         return (
             <div>
-                <Switch />
-                <Buttons 
-                    film1={films[this.state.ints[0]]}
-                    film2={films[this.state.ints[1]]}
-                    onClick={this.updateWinner}
+                <Switch
+                    isChecked={this.state.isChecked}
+                    onClick={this.updateChecked}
                 />
-                <Rankings
-                    films={films}
-                    rankings={this.state.rankings}
-                />
+                {
+                    !this.state.isChecked ? 
+                    <Buttons 
+                        film1={films[this.state.ints[0]]}
+                        film2={films[this.state.ints[1]]}
+                        onClick={this.updateWinner}
+                    /> :
+                    <Rankings
+                        films={films}
+                        rankings={this.state.rankings}
+                    />
+                }
             </div>
         )
     }
