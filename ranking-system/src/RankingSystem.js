@@ -174,4 +174,6 @@ class RankingSystem extends Component {
     }
 }
 
+// TODO: React UI bugs, make logic smarter, add pictures, add custom lists, arg sort ?, switch off React classes
+
 export default RankingSystem;
